@@ -20,7 +20,8 @@ as_calib_obj <- function(df, conc.var="conc", response.var="fl", units=NULL, com
     compound=compound,
     units=units,
     conc.var=conc.var,
-    response.var=response.var)
+    response.var=response.var,
+    calib_lm=calib_lm)
   class(obj) <- "calib_obj"
   
   obj
