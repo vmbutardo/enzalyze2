@@ -18,7 +18,10 @@ as_calib_obj <- function(df, conc.var="conc", response.var="fl", units=NULL, com
   obj <- list(
     calib.data=df,
     compound=compound,
-    units=units)
+    units=units,
+    conc.var=conc.var,
+    response.var=response.var)
+  class(obj) <- "calib_obj"
   
   obj
   
