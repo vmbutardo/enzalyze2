@@ -12,15 +12,18 @@
 
 lm_stats <- function(d, xvar, yvar) {
   # Function to safely return the slope, intercept, slope.se, int.se, rsq, and pvalue of a linear model
-  #print(d[1, ])
   
-  ##### CHeck that this tryCatch syntax is correct
-  #get_model <- function(m) {
-  # m <- tryCatch(
-  #    model <- lm(d[ , yvar] ~ d[ , xvar]),
-  #    error <- NA,
-  #    finally={})
-  #}
+  
+  # Check that the relevant columns are in your data frame
+  if(!(xvar %in% names(d))) {
+    stop(paste("The data frame has no column named", xvar))
+  }
+  if(!(yvar %in% names(d))) {
+    stop(paste("The data frame has no column named", yvar))
+  }
+  
+  
+  
   m <- lm(d[ , yvar] ~ d[ , xvar]) # Should wrap this in a tryCatch too!
   # Alsom improve error message if xvar or yvar arent in d
   sum_m <- summary(m)
